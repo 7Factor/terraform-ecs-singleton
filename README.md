@@ -18,7 +18,7 @@ Then, plan your run and deploy.
 
 ```hcl-terraform
 module "terraform-ecs-task" {
-  source                = "git::https://github.com/7Factor/terraform-ecs-task.git"
+  source                = "git::https://github.com/7Factor/terraform-ecs-singleton-task.git"
   vpc_id                = "${data.aws_vpc.primary_vpc.id}"
 
   app_name              = "${var.app_name}"
@@ -26,8 +26,6 @@ module "terraform-ecs-task" {
   cpu                   = "256"
   memory                = "256"
   desired_task_count    = "2"
-  service_role_arn      = "${var.service_role_arn}"
-  service_name          = "Angular Starter Service"
-  container_definitions = "${data.template_file.container_definitions.rendered}"
+  container_definition = "${data.template_file.container_definitions.rendered}"
 }
 ```
