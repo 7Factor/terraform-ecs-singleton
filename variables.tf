@@ -12,10 +12,6 @@ variable "app_name" {
   description = "The name of your app. This is used in the task configuration."
 }
 
-variable "app_port" {
-  description = "The port you want you open on your instances. We make no assumptions here."
-}
-
 variable "cpu" {
   default     = 256
   description = "The number of cpu units used by the task."
