@@ -36,14 +36,9 @@ variable "service_deployment_maximum_percent" {
   description = "The upper limit (as a percentage of the service's desiredCount) of the number of running tasks that can be running in a service during a deployment. Defaults to 200 percent, which should be used in 99% of cases to allow for proper green/blue."
 }
 
-variable "launch_type" {
-  default     = "EC2"
-  description = "The launch type for the task. We assume EC2 by default."
-}
-
 variable "volumes" {
   type        = list(any)
-  default     = []
+  default     = [{ name = "dev-null", host_path = "/dev/null" }]
   description = "A list of definitions to attach volumes to the ECS task. Amazon does not allow empty volume names once declared, so defaulting to a dummy name if this var is left unused."
 }
 
