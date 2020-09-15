@@ -1,5 +1,7 @@
 # ECS Singleton Task
 
+**This module assumes an EC2 launch type.** For the complimentary fargate task, [go here.](https://github.com/7Factor/terraform-fargate-ecs-singleton-task)
+
 This module will allow you to deploy an ECS Task and an ECS Service. This is intended to be run as part of your app deployment
 pipeline. It works well with [Concourse.](https://concourse-ci.org) It is assumed you already have a solution for deploying an 
 ECS Cluster. If not, check out [ours.](https://github.com/7Factor/terraform-ecs-cluster).

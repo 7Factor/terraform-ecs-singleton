@@ -4,7 +4,7 @@ data "aws_ecs_cluster" "target_cluster" {
 
 resource "aws_ecs_task_definition" "main_task" {
   family                   = "${var.app_name}-tsk"
-  requires_compatibilities = [var.launch_type]
+  requires_compatibilities = ["EC2"]
   network_mode             = "bridge"
   cpu                      = var.cpu
   memory                   = var.memory
@@ -30,6 +30,6 @@ resource "aws_ecs_service" "main_service" {
   task_definition            = aws_ecs_task_definition.main_task.arn
   cluster                    = data.aws_ecs_cluster.target_cluster.id
   desired_count              = var.desired_task_count
-  launch_type                = var.launch_type
+  launch_type                = "EC2"
   deployment_maximum_percent = var.service_deployment_maximum_percent
 }
