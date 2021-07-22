@@ -32,4 +32,12 @@ resource "aws_ecs_service" "main_service" {
   desired_count              = var.desired_task_count
   launch_type                = var.launch_type
   deployment_maximum_percent = var.service_deployment_maximum_percent
+  
+  dynamic "ordered_placement_strategy" {
+    for_each = var.ordered_placement_strategies
+    content {
+      type  = ordered_placement_strategy.value.type
+      field = ordered_placement_strategy.value.field
+    }
+  }
 }
